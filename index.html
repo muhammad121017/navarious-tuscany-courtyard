@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tuscany Courtyard Islamabad - Authentic Italian fine dining, artisanal pasta, wood-fired pizza, and Mediterranean ambiance in Kohsar Market, F-6/3.">
+  <meta name="keywords" content="Tuscany Courtyard, Islamabad restaurant, F-6 Kohsar Market, Italian fine dining, pasta, pizza">
+  <title>Tuscany Courtyard | Authentic Italian Fine Dining in F-6 Islamabad</title>
+
+  <!-- Google Fonts: Playfair Display, Cinzel, and Inter for Luxury Editorial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Primary External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ==========================================================================
+       ACADEMIC REQUIREMENT: Meaningful Instance of Internal CSS in <head>
+       Purpose: Scoped document styling for VIP status banners, badge components,
+       and state overrides for reservation notifications.
+       ========================================================================== -->
+  <style>
+    /* Internal CSS: Scoped Status Pill Component */
+    .vip-reservation-badge {
+      display: inline-block;
+      background-color: rgba(226, 114, 91, 0.08);
+      color: #E2725B;
+      border: 1px solid rgba(226, 114, 91, 0.3);
+      padding: 0.4rem 1.1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 600;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Internal CSS: Specific override demonstrating head-level presentation */
+    .exclusive-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #E2725B;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. SEMANTIC HEADER & NAVIGATION
+       Technical Requirement: <nav> with display: inline-block links
+       ========================================================================== -->
+  <header id="site-header">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-title">Tuscany Courtyard</span>
+        <span class="logo-subtitle">Kohsar Market &bull; F-6 Islamabad</span>
+      </a>
+
+      <!-- Primary Navigation Bar -->
+      <nav id="primary-nav" aria-label="Main Navigation">
+        <ul class="nav-links-list">
+          <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+          <li class="nav-item"><a href="#heritage" class="nav-link">Heritage</a></li>
+          <li class="nav-item"><a href="#reservations" class="nav-link">Reservations</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. HERO SECTION
+       Heading: "Rustic Luxury in the Heart of F-6"
+       Background: Tasteful high-quality image of Tuscany Courtyard's outdoor sunlit courtyard
+       ========================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="vip-reservation-badge">Kohsar Market &bull; Established 2012</div>
+      <h1 class="hero-title">Rustic Luxury in the Heart of F-6</h1>
+      <p class="hero-lead">
+        Immerse yourself in sun-dappled courtyard dining where authentic Tuscan traditions unite with Islamabad's finest culinary savoir-faire. Handcrafted pasta, fire-blistered crusts, and Mediterranean poise.
+      </p>
+      
+      <!-- Primary Call to Action Button (display: inline-block) -->
+      <a href="#reservations" class="btn btn-primary" id="hero-reserve-btn">Reserve a Table</a>
+
+      <!-- Academic Demonstration: Hidden decorative element using display: none -->
+      <div class="decorative-secret-ribbon" aria-hidden="true">
+        Summer Truffle Special Announcement - Visible on Private Tasting Nights
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       3. MENU SECTION (THE LAB GRID)
+       Technical Requirement: Responsive CSS Grid featuring exactly 4 authentic signature cards
+       Items:
+       1. Margherita Pizza (PKR 1,695)
+       2. Flame Grilled Jalapeno Burger (PKR 1,645)
+       3. Tuscany Club Sandwich (PKR 1,645)
+       4. Fettuccine Alfredo Pasta (PKR 1,975)
+       ========================================================================== -->
+  <section id="menu" class="section-container">
+    <div class="section-header">
+      <p class="section-eyebrow">Kohsar Signature Selection</p>
+      <h2 class="section-title">The Lab Grid</h2>
+      
+      <!-- ACADEMIC REQUIREMENT: Meaningful Inline CSS on a decorative HTML element -->
+      <span class="decorative-separator" style="display: block; width: 64px; height: 2px; background: #E2725B; margin: 1.25rem auto 2.5rem; border-radius: 2px;"></span>
+      
+      <p class="section-description">
+        Authentic recipes prepared à la minute with cold-pressed Italian olive oils, DOP San Marzano tomatoes, and artisanal cheeses.
+      </p>
+    </div>
+
+    <!-- Responsive Food Cards Grid (Exactly 4 items) -->
+    <div class="food-grid">
+
+      <!-- Dish 1: Margherita Pizza (Targeted with ID #first-dish for Specificity Demonstration) -->
+      <article class="food-card" id="first-dish" data-category="pizza">
+        <div class="card-image-wrap">
+          <img src="images/margherita_pizza.jpg" alt="Artisan Margherita Pizza at Tuscany Courtyard" class="dish-img" loading="lazy">
+          <span class="card-badge">Chef's Signature</span>
+        </div>
+        <div class="card-body">
+          <span class="exclusive-tag">Artisanal Pizza</span>
+          <h3 class="card-title">Margherita Pizza</h3>
+          <!-- Fixed height description with sleek overflow: auto scrollbar -->
+          <div class="card-description">
+            Italian sauce, cheese &amp; fresh basil. Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves.
+          </div>
+          <div class="card-footer">
+            <span class="price-wrapper">
+              <span class="currency-tag">PKR</span>
+              <span class="price-value">1,695</span>
+            </span>
+            <button type="button" class="btn order-btn" data-dish="Margherita Pizza">Order Now</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dish 2: Flame Grilled Jalapeno Burger -->
+      <article class="food-card" data-category="burger">
+        <div class="card-image-wrap">
+          <img src="images/jalapeno_burger.jpg" alt="Flame Grilled Jalapeno Burger at Tuscany Courtyard" class="dish-img" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="exclusive-tag">Gourmet Grille</span>
+          <h3 class="card-title">Flame Grilled Jalapeno Burger</h3>
+          <!-- Fixed height description with sleek overflow: auto scrollbar -->
+          <div class="card-description">
+            Juicy flame-grilled patty topped with jalapeno cheese sauce. Layered on an artisanal toasted brioche bun with crisp iceberg lettuce, sun-ripened tomatoes, pickled jalapenos, and our chef's signature spiced emulsion.
+          </div>
+          <div class="card-footer">
+            <span class="price-wrapper">
+              <span class="currency-tag">PKR</span>
+              <span class="price-value">1,645</span>
+            </span>
+            <button type="button" class="btn order-btn" data-dish="Flame Grilled Jalapeno Burger">Order Now</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dish 3: Tuscany Club Sandwich -->
+      <article class="food-card" data-category="sandwich">
+        <div class="card-image-wrap">
+          <img src="images/club_sandwich.jpg" alt="Tuscany Club Sandwich at Tuscany Courtyard" class="dish-img" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="exclusive-tag">Classic Delicatessen</span>
+          <h3 class="card-title">Tuscany Club Sandwich</h3>
+          <!-- Fixed height description with sleek overflow: auto scrollbar -->
+          <div class="card-description">
+            Grilled chicken, mortadella, layered with our special sauce. Sliced into pristine triangles between golden toasted pain de mie, served alongside hand-cut herb-tossed potatoes and house-made seasoned garlic aioli.
+          </div>
+          <div class="card-footer">
+            <span class="price-wrapper">
+              <span class="currency-tag">PKR</span>
+              <span class="price-value">1,645</span>
+            </span>
+            <button type="button" class="btn order-btn" data-dish="Tuscany Club Sandwich">Order Now</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dish 4: Fettuccine Alfredo Pasta -->
+      <article class="food-card" data-category="pasta">
+        <div class="card-image-wrap">
+          <img src="images/fettuccine_alfredo.jpg" alt="Fettuccine Alfredo Pasta at Tuscany Courtyard" class="dish-img" loading="lazy">
+        </div>
+        <div class="card-body">
+          <span class="exclusive-tag">Artisanal Pasta</span>
+          <h3 class="card-title">Fettuccine Alfredo Pasta</h3>
+          <!-- Fixed height description with sleek overflow: auto scrollbar -->
+          <div class="card-description">
+            Freshly prepared pasta with grilled chicken tossed in light creamy alfredo sauce. Silky ribbons of egg fettuccine enrobed in aged Parmigiano-Reggiano, sweet European butter, cracked black peppercorns, and pan-seared herb chicken.
+          </div>
+          <div class="card-footer">
+            <span class="price-wrapper">
+              <span class="currency-tag">PKR</span>
+              <span class="price-value">1,975</span>
+            </span>
+            <button type="button" class="btn order-btn" data-dish="Fettuccine Alfredo Pasta">Order Now</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       4. ABOUT SECTION (HERITAGE)
+       Academic Demonstration: Physical demonstration of vertical margin collapsing
+       with two consecutive paragraphs.
+       ========================================================================== -->
+  <section id="heritage" class="section-container heritage-section">
+    <div class="heritage-layout">
+      <div class="heritage-text-content">
+        <p class="section-eyebrow">Culinary Lineage</p>
+        <h2 class="section-title">Heritage &amp; Ambiance</h2>
+        
+        <!-- Meaningful Inline CSS decorative accent -->
+        <span class="decorative-separator" style="display: block; width: 64px; height: 2px; background: #E2725B; margin: 1.25rem 0 2.5rem; border-radius: 2px;"></span>
+
+        <!-- Paragraph 1: Demonstrates vertical margin-bottom (32px) -->
+        <p class="heritage-lead-p">
+          Nestled within the vibrant, leafy corridor of Kohsar Market in Islamabad's Sector F-6, Tuscany Courtyard remains an uncompromising tribute to classic Italian hospitality. Our kitchen is dedicated exclusively to the provenance of our pantry—importing Parmigiano-Reggiano directly from Emilia-Romagna, single-estate cold pressed extra virgin olive oil from Tuscany, and organic durum wheat semolina for daily pasta craftsmanship.
+        </p>
+
+        <!-- Paragraph 2: Demonstrates vertical margin-top (24px) which collapses into 32px -->
+        <p class="heritage-sub-p">
+          Beyond ingredients, our sunlit outdoor courtyard was designed as a living sanctuary of Mediterranean leisure. Under rustic terracotta arches and gentle ambient evening lanterns, every service celebrates the unhurried joy of sharing honest, exquisite food. Here, dining is an art form rooted in simplicity, elevated technique, and timeless Italian warmth.
+        </p>
+
+        <div class="heritage-features">
+          <div class="feature-item">
+            <span class="feature-number">100%</span>
+            <span class="feature-label">DOP Certified Cheeses</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-number">48hr</span>
+            <span class="feature-label">Fermented Dough</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-number">Daily</span>
+            <span class="feature-label">Fresh Hand-Rolled Pasta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="heritage-visual">
+        <div class="heritage-image-frame">
+          <img src="images/courtyard_hero.jpg" alt="Tuscany Courtyard Outdoor Dining Space" class="heritage-img" loading="lazy">
+          <div class="heritage-caption-badge">Kohsar Market &bull; Sector F-6/3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       5. CONTACT SECTION (RESERVATIONS)
+       Technical Requirement: Minimalist, elegantly styled HTML form
+       (Name, Email, Message/Date, Submit)
+       ========================================================================== -->
+  <section id="reservations" class="section-container reservations-section">
+    <div class="section-header">
+      <p class="section-eyebrow">Table Concierge</p>
+      <h2 class="section-title">Private Reservations</h2>
+      
+      <!-- Meaningful Inline CSS decorative separator -->
+      <span class="decorative-separator" style="display: block; width: 64px; height: 2px; background: #E2725B; margin: 1.25rem auto 2.5rem; border-radius: 2px;"></span>
+      
+      <p class="section-description">
+        For intimate dinners, family celebrations, or private courtyard soirees. Kindly reserve at least 24 hours in advance.
+      </p>
+    </div>
+
+    <div class="form-container">
+      <form id="reservation-form" class="reservation-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Grazie! Your reservation request at Tuscany Courtyard has been received. Our concierge will contact you shortly.');">
+        
+        <div class="form-row">
+          <!-- Attribute Selector: input[type="text"] -->
+          <div class="form-group">
+            <label for="guest-name">Full Name</label>
+            <input type="text" id="guest-name" name="guest_name" placeholder="e.g. Elena Rostova" required autocomplete="name">
+          </div>
+
+          <!-- Attribute Selector: input[type="email"] -->
+          <div class="form-group">
+            <label for="guest-email">Email Address</label>
+            <input type="email" id="guest-email" name="guest_email" placeholder="e.g. elena@courtyard.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <!-- Attribute Selector: input[type="tel"] -->
+          <div class="form-group">
+            <label for="guest-phone">Contact Number</label>
+            <input type="tel" id="guest-phone" name="guest_phone" placeholder="+92 300 1234567" required autocomplete="tel">
+          </div>
+
+          <!-- Attribute Selector: input[type="datetime-local"] -->
+          <div class="form-group">
+            <label for="reservation-date">Preferred Date &amp; Time</label>
+            <input type="datetime-local" id="reservation-date" name="reservation_datetime" required>
+          </div>
+        </div>
+
+        <!-- Attribute Selector: textarea[name="guest_notes"] -->
+        <div class="form-group">
+          <label for="guest-notes">Special Requests / Seating Preference</label>
+          <textarea id="guest-notes" name="guest_notes" rows="4" placeholder="Indoor dining, sunlit courtyard, dietary requirements, or anniversary arrangement..."></textarea>
+        </div>
+
+        <div class="form-submit-row">
+          <button type="submit" class="btn btn-submit" id="submit-booking-btn">Confirm Reservation Request</button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       6. MINIMALIST FOOTER
+       Requirement: Containing "© 2026 Tuscany Courtyard"
+       ========================================================================== -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Tuscany Courtyard</p>
+      <p class="footer-address">Kohsar Market, Sector F-6/3, Islamabad, Pakistan</p>
+      <p class="footer-copyright">&copy; 2026 Tuscany Courtyard. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

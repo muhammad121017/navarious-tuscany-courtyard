@@ -1,0 +1,928 @@
+/* ==========================================================================
+   TUSCANY COURTYARD | KOHSAR MARKET, F-6 ISLAMABAD
+   Master Architectural Stylesheet - Academic & Fine Dining Production Standard
+   Aesthetic: Ultra-Luxury Mediterranean, Alabaster (#FAFAFA), Terracotta (#E2725B)
+   ========================================================================== */
+
+/* ==========================================================================
+   TABLE OF CONTENTS:
+   1. Universal Reset & Universal Box-Sizing (Box Model Physics)
+   2. Inheritance Demonstration (Body Typography & Global Cascade)
+   3. Academic Selector Suite (Element, Class, ID, Attribute, Grouping, Descendant)
+   4. Display Physics (block, inline, inline-block, none)
+   5. Margin Collapsing Physical Demonstration (Heritage Section)
+   6. Specificity Demonstration (Conflicting Rules Explained)
+   7. Cascade (Source Order) Demonstration (Identical Specificity Explained)
+   8. Navigation & Header Architecture
+   9. Hero Section (Moody Courtyard Background & Overlay)
+   10. Menu Section & The Lab Grid Layout
+   11. Micro-Interactions & Pseudo-Classes (:hover, :first-child, etc.)
+   12. Pseudo-Elements (::before & ::after Animated Heading Underline)
+   13. Custom Minimalist WebKit Scrollbar (Overflow Demonstration)
+   14. Heritage & Reservations Layouts
+   15. Footer Styling & Responsive Breakpoints
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. UNIVERSAL BOX-SIZING (BOX MODEL REQUIREMENT)
+   Applying box-sizing: border-box universally ensures that padding and borders
+   are incorporated within the specified width and height, preventing accidental
+   horizontal overflow and layout breakage across browsers.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   2. INHERITANCE DEMONSTRATION (ELEMENT SELECTOR)
+   TECHNICAL REQUIREMENT:
+   Setting font-family, color, and line-height on the <body> tag demonstrates
+   CSS Inheritance. Child elements (p, li, span, h3) automatically inherit these
+   computed typographical properties unless explicitly overridden.
+   ========================================================================== */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1A1A1A; /* Deep Charcoal for maximum editorial contrast */
+  background-color: #FAFAFA; /* Warm Alabaster luxury backdrop */
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+
+/* ==========================================================================
+   3. SELECTOR SUITE: GROUPING SELECTORS
+   TECHNICAL REQUIREMENT: Grouping selectors to apply shared typography rules
+   across multiple heading elements simultaneously.
+   ========================================================================== */
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  color: #1A1A1A;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+
+/* ==========================================================================
+   4. DISPLAY DEMONSTRATION: inline, block, inline-block, none
+   ========================================================================== */
+
+/* 4A. DISPLAY: INLINE
+   Inline elements only take up as much width as their content and do not
+   accept top/bottom margins or fixed heights. */
+.currency-tag {
+  display: inline;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  color: #E2725B;
+  vertical-align: baseline;
+}
+
+/* 4B. DISPLAY: BLOCK
+   Block elements occupy 100% of available container width and always begin
+   on a fresh line. */
+.section-description,
+.card-body,
+.form-group label {
+  display: block;
+}
+
+/* 4C. DISPLAY: INLINE-BLOCK
+   TECHNICAL REQUIREMENT: Used on navigation links and buttons.
+   Inline-block allows elements to flow horizontally side-by-side like text,
+   while retaining the ability to set fixed padding, width, height, and margins. */
+.nav-link,
+.btn,
+.order-btn {
+  display: inline-block;
+}
+
+/* 4D. DISPLAY: NONE
+   TECHNICAL REQUIREMENT: display: none completely removes an element from the
+   visual rendering tree and layout calculation (taking up 0 space), unlike
+   visibility: hidden which preserves spatial dimensions. */
+.decorative-secret-ribbon {
+  display: none; /* Intentionally hidden for academic demonstration */
+}
+
+
+/* ==========================================================================
+   5. SPECIFICITY DEMONSTRATION (ACADEMIC REQUIREMENT)
+   ==========================================================================
+   SCENARIO:
+   We declare two conflicting rules targeting the card title of the first dish.
+   
+   RULE A (General Class Selector):
+   Selector: .card-title
+   Specificity Calculation: (0, 1, 0) -> 1 Class
+   
+   RULE B (ID + Descendant Class Selector):
+   Selector: #first-dish .card-title
+   Specificity Calculation: (1, 1, 0) -> 1 ID + 1 Class
+   
+   EXPLANATION OF THE WINNER:
+   Even if Rule A were placed after Rule B in source code, RULE B WINS because
+   an ID selector holds a specificity weight order of magnitude higher (1,0,0)
+   than any class selector (0,1,0). Thus, the Margherita card title receives
+   the specific dark charcoal styling defined under #first-dish .card-title.
+   ========================================================================== */
+
+/* Rule A: General class selector targeting all card titles */
+.card-title {
+  color: #1A1A1A;
+  font-size: 1.15rem;
+  margin-bottom: 0.65rem;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Rule B: ID + Descendant selector targeting the first dish title */
+#first-dish .card-title {
+  color: #111111; /* WINS SPECIFICITY: ID (1,0,0) dominates over Class (0,1,0) */
+  font-weight: 700;
+}
+
+
+/* ==========================================================================
+   6. CASCADE (SOURCE ORDER) DEMONSTRATION (ACADEMIC REQUIREMENT)
+   ==========================================================================
+   SCENARIO:
+   Below are two conflicting background declarations targeting .order-btn.
+   
+   RULE 1: .order-btn { background-color: #1A1A1A; }
+   RULE 2: .order-btn { background-color: #E2725B; }
+   
+   SPECIFICITY:
+   Both rules have IDENTICAL specificity: (0, 1, 0) for a single class selector.
+   
+   EXPLANATION OF THE WINNER:
+   When two or more rules have equal specificity and equal origin/importance,
+   the CSS Cascade resolves the tie through "Source Order": the rule declared
+   LATEST (furthest down the stylesheet) overrides preceding declarations.
+   Therefore, RULE 2 wins, giving the order buttons their terracotta background.
+   ========================================================================== */
+
+/* Cascade Candidate 1 */
+.order-btn {
+  background-color: #1A1A1A; /* Charcoal: Overridden by the next identical-specificity rule */
+}
+
+/* Cascade Candidate 2: WINS DUE TO CASCADE SOURCE ORDER (Declared last) */
+.order-btn {
+  background-color: #E2725B; /* Terracotta: WINS because it appears lower in the cascade */
+  color: #FFFFFF;
+  border: 1px solid #E2725B;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ==========================================================================
+   7. VERTICAL MARGIN COLLAPSING PHYSICAL DEMONSTRATION
+   ==========================================================================
+   TECHNICAL REQUIREMENT (HERITAGE SECTION):
+   When two vertical block-level margins touch in the normal document flow:
+   - .heritage-lead-p has margin-bottom: 32px;
+   - .heritage-sub-p has margin-top: 24px;
+   
+   PHYSICS BEHIND COLLAPSE:
+   Instead of summing together into a 56px gap (32px + 24px), the CSS box model
+   physically collapses the adjacent vertical margins into one single margin
+   equal to the MAXIMUM of the two values: MAX(32px, 24px) = exactly 32px!
+   ========================================================================== */
+.heritage-lead-p {
+  margin-bottom: 32px; /* Margin collapsing participant A */
+  font-size: 1.05rem;
+  color: #333333;
+  line-height: 1.85;
+}
+
+.heritage-sub-p {
+  margin-top: 24px; /* Margin collapsing participant B (collapses into 32px) */
+  font-size: 1.02rem;
+  color: #555555;
+  line-height: 1.85;
+}
+
+
+/* ==========================================================================
+   8. SELECTOR SUITE: ATTRIBUTE & DESCENDANT SELECTORS
+   ========================================================================== */
+
+/* Descendant Selector: Targets links nested inside navigation item list */
+.nav-links-list .nav-item .nav-link {
+  color: #1A1A1A;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  position: relative;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Descendant Selector: Targets descriptions specifically within food cards */
+.food-card .card-description {
+  font-size: 0.875rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* Attribute Selectors: Precision targeting of form inputs by type and attribute */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="datetime-local"],
+textarea[name="guest_notes"] {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #1A1A1A;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Attribute Selector Focus State */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="datetime-local"]:focus,
+textarea[name="guest_notes"]:focus {
+  border-color: #E2725B;
+  box-shadow: 0 0 0 3px rgba(226, 114, 91, 0.12);
+}
+
+/* Attribute Selector for Food Card category categorization */
+article[data-category="pizza"] {
+  position: relative;
+}
+
+
+/* ==========================================================================
+   9. HEADER & NAVIGATION ARCHITECTURE
+   ========================================================================== */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(224, 224, 224, 0.7);
+  padding: 1.1rem 2rem;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #1A1A1A;
+  text-transform: uppercase;
+}
+
+.logo-subtitle {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #E2725B;
+  font-weight: 500;
+  margin-top: 0.1rem;
+}
+
+.nav-links-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+
+/* ==========================================================================
+   10. HERO SECTION ARCHITECTURE
+   Tasteful high-res courtyard image background with atmospheric gradient overlay
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1.5rem;
+  background-image: url('images/courtyard_hero.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #FFFFFF;
+}
+
+/* Atmospheric Sun-Kissed Vignette & Luxury Gradient Overlay */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 26, 26, 0.45) 0%,
+    rgba(26, 26, 26, 0.72) 60%,
+    rgba(26, 26, 26, 0.88) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 840px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  font-weight: 600;
+  color: #FAFAFA;
+  line-height: 1.18;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+}
+
+.hero-lead {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: #F0F0F0;
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* Primary Button Styling */
+.btn-primary {
+  background-color: #E2725B;
+  color: #FFFFFF;
+  border: 1px solid #E2725B;
+  padding: 1rem 2.5rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(226, 114, 91, 0.35);
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ==========================================================================
+   11. SECTION SHARED ARCHITECTURE & PSEUDO-ELEMENT UNDERLINE
+   TECHNICAL REQUIREMENT:
+   Use ::before and ::after to create a minimalist, animated underline effect
+   on section headings when hovered.
+   ========================================================================== */
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 6.5rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-eyebrow {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: #E2725B;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+/* SECTION HEADING WITH ANIMATED UNDERLINE PSEUDO-ELEMENTS */
+.section-title {
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+/* Base line layer using ::before */
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #E2725B;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Center accent pip using ::after */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: #1A1A1A;
+  border-radius: 50%;
+  transform: translateX(-50%) scale(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* On hover, the underline seamlessly expands outward from the center */
+.section-title:hover::before {
+  width: 100%;
+}
+
+.section-title:hover::after {
+  transform: translateX(-50%) scale(1);
+}
+
+.section-description {
+  font-size: 1.02rem;
+  color: #666666;
+  line-height: 1.7;
+}
+
+
+/* ==========================================================================
+   12. MENU SECTION (THE LAB GRID) & BOX MODEL PHYSICS
+   TECHNICAL REQUIREMENTS:
+   - Responsive CSS Grid featuring exactly 4 signature food cards
+   - Box model: clear padding (2rem), subtle border (1px solid #E0E0E0),
+     margin, soft expensive box-shadow (0 10px 30px rgba(0,0,0,0.05)),
+     sharp/elegant border-radius.
+   - Max-width and min-height constraints.
+   - Fixed height on description with overflow: auto & custom scrollbar.
+   ========================================================================== */
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+/* BOX MODEL SPECIFICATION FOR FOOD CARDS */
+.food-card {
+  background-color: #FFFFFF;
+  padding: 1.85rem; /* Clear 2rem-tier internal breathing room */
+  border: 1px solid #E0E0E0; /* Subtle 1px boundary */
+  margin: 0.5rem; /* Deliberate box-model external separation */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Soft, expensive ambient shadow */
+  border-radius: 6px; /* Elegant, crisp architectural radius */
+  max-width: 340px; /* Explicit max-width constraint */
+  min-height: 520px; /* Explicit min-height constraint */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+
+/* Subtle elevation on hover for cards */
+.food-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   MICRO-INTERACTION: :first-child ELEVATION (ACADEMIC REQUIREMENT)
+   Apply a distinct, elevated style to the first food card using :first-child.
+   ========================================================================== */
+.food-card:first-child {
+  border: 1px solid #E2725B; /* Delicate terracotta luxury highlight */
+  box-shadow: 0 14px 35px rgba(226, 114, 91, 0.12);
+  position: relative;
+}
+
+/* Card Image Wrapper */
+.card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 4px;
+  margin-bottom: 1.4rem;
+  background-color: #F0F0F0;
+}
+
+.dish-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out;
+}
+
+.food-card:hover .dish-img {
+  transform: scale(1.05);
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #E2725B;
+  color: #FFFFFF;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   13. FIXED HEIGHT & OVERFLOW: AUTO (CUSTOM WEBKIT SCROLLBAR)
+   TECHNICAL REQUIREMENT:
+   Fixed height on food card descriptions, using overflow: auto with a custom
+   sleek, minimalist scrollbar.
+   ========================================================================== */
+.card-description {
+  height: 72px; /* Fixed height constraint */
+  overflow-y: auto; /* Activates overflow scroll handling */
+  margin-bottom: 1.5rem;
+  padding-right: 0.45rem;
+}
+
+/* Custom Minimalist Scrollbar for Card Description Overflow */
+.card-description::-webkit-scrollbar {
+  width: 4px; /* Super sleek 4px profile */
+}
+
+.card-description::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 4px;
+}
+
+.card-description::-webkit-scrollbar-thumb {
+  background-color: #D6D6D6;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.card-description::-webkit-scrollbar-thumb:hover {
+  background-color: #E2725B; /* Shifts to terracotta upon user scroll interaction */
+}
+
+/* For Firefox minimal scrollbar styling */
+.card-description {
+  scrollbar-width: thin;
+  scrollbar-color: #D6D6D6 rgba(0, 0, 0, 0.03);
+}
+
+/* Card Footer: Price and Order Action */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #F0F0F0;
+  padding-top: 1.1rem;
+  margin-top: auto;
+}
+
+.price-wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+}
+
+.price-value {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+
+/* ==========================================================================
+   14. MICRO-INTERACTIONS: :HOVER & TACTILE SCALE PSEUDO-CLASSES
+   TECHNICAL REQUIREMENT:
+   - Smooth 0.3s ease-in-out transitions.
+   - :hover on navigation links (terracotta shift #E2725B).
+   - :hover on buttons (tactile scale down to 0.98).
+   ========================================================================== */
+.nav-link:hover {
+  color: #E2725B;
+}
+
+/* Nav Link Subtle Underline Transition */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0.75rem;
+  right: 0.75rem;
+  height: 1px;
+  background-color: #E2725B;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Tactile Scale Feedback on Buttons */
+.btn:hover,
+.order-btn:hover {
+  transform: scale(0.98); /* Tactile depression feedback */
+  box-shadow: 0 4px 14px rgba(226, 114, 91, 0.3);
+}
+
+.btn:active,
+.order-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* ==========================================================================
+   15. HERITAGE SECTION LAYOUT & STATS
+   ========================================================================== */
+.heritage-section {
+  background-color: #F5F3EF; /* Subtle warm Tuscan linen nuance */
+  border-top: 1px solid #ECE7DE;
+  border-bottom: 1px solid #ECE7DE;
+}
+
+.heritage-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.heritage-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.feature-number {
+  font-family: 'Cinzel', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #E2725B;
+  line-height: 1.2;
+}
+
+.feature-label {
+  font-size: 0.8rem;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+.heritage-visual {
+  position: relative;
+}
+
+.heritage-image-frame {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid #E0E0E0;
+}
+
+.heritage-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.heritage-caption-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(26, 26, 26, 0.85);
+  backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 2px;
+  border-left: 2px solid #E2725B;
+}
+
+
+/* ==========================================================================
+   16. PRIVATE RESERVATIONS FORM ARCHITECTURE
+   ========================================================================== */
+.reservations-section {
+  background-color: #FAFAFA;
+}
+
+.form-container {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  padding: 3rem;
+  border-radius: 6px;
+  border: 1px solid #E8E8E8;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.04);
+}
+
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #333333;
+}
+
+textarea[name="guest_notes"] {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-submit-row {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.btn-submit {
+  width: 100%;
+  max-width: 380px;
+  background-color: #E2725B;
+  color: #FFFFFF;
+  border: 1px solid #E2725B;
+  padding: 1.05rem 2rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(226, 114, 91, 0.3);
+  transition: all 0.3s ease-in-out;
+}
+
+
+/* ==========================================================================
+   17. MINIMALIST FOOTER
+   ========================================================================== */
+#site-footer {
+  background-color: #1A1A1A;
+  color: #ECECEC;
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid #2A2A2A;
+}
+
+.footer-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #FAFAFA;
+  margin-bottom: 0.5rem;
+}
+
+.footer-address {
+  font-size: 0.85rem;
+  color: #999999;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #777777;
+  letter-spacing: 0.08em;
+}
+
+
+/* ==========================================================================
+   18. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 900px) {
+  .heritage-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #site-header {
+    padding: 1rem;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-links-list {
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section-container {
+    padding: 4rem 1.25rem;
+  }
+
+  .form-container {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .heritage-features {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
