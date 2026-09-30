@@ -53,6 +53,7 @@
   <!-- ==========================================================================
        1. SEMANTIC HEADER & NAVIGATION
        Technical Requirement: <nav> with display: inline-block links
+       Enhanced with Interactive Luxury Cart Trigger
        ========================================================================== -->
   <header id="site-header">
     <div class="nav-container">
@@ -68,6 +69,18 @@
           <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
           <li class="nav-item"><a href="#heritage" class="nav-link">Heritage</a></li>
           <li class="nav-item"><a href="#reservations" class="nav-link">Reservations</a></li>
+          <!-- Interactive Cart Trigger Button -->
+          <li class="nav-item">
+            <button type="button" class="nav-cart-btn" id="open-cart-btn" aria-label="View Shopping Cart">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="cart-icon">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span class="nav-cart-text">Cart</span>
+              <span class="nav-cart-badge" id="cart-counter">0</span>
+            </button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -105,6 +118,7 @@
        2. Flame Grilled Jalapeno Burger (PKR 1,645)
        3. Tuscany Club Sandwich (PKR 1,645)
        4. Fettuccine Alfredo Pasta (PKR 1,975)
+       Enhanced with Working "Add to Cart" and "Buy Now" Direct Checkout Buttons
        ========================================================================== -->
   <section id="menu" class="section-container">
     <div class="section-header">
@@ -136,11 +150,25 @@
             Italian sauce, cheese &amp; fresh basil. Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves.
           </div>
           <div class="card-footer">
-            <span class="price-wrapper">
-              <span class="currency-tag">PKR</span>
-              <span class="price-value">1,695</span>
-            </span>
-            <button type="button" class="btn order-btn" data-dish="Margherita Pizza">Order Now</button>
+            <div class="card-pricing-row">
+              <span class="price-wrapper">
+                <span class="currency-tag">PKR</span>
+                <span class="price-value">1,695</span>
+              </span>
+              <span class="dish-prep-time">&#9201; 20-25 mins</span>
+            </div>
+            <!-- Dual Interactive Buttons: Add to Cart & Buy Now -->
+            <div class="card-actions">
+              <button type="button" class="btn btn-add-cart" data-id="pizza-1" data-name="Margherita Pizza" data-price="1695" data-img="images/margherita_pizza.jpg" aria-label="Add Margherita Pizza to cart">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn order-btn buy-now-btn" data-id="pizza-1" data-name="Margherita Pizza" data-price="1695" data-img="images/margherita_pizza.jpg" aria-label="Buy Margherita Pizza now">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -158,11 +186,25 @@
             Juicy flame-grilled patty topped with jalapeno cheese sauce. Layered on an artisanal toasted brioche bun with crisp iceberg lettuce, sun-ripened tomatoes, pickled jalapenos, and our chef's signature spiced emulsion.
           </div>
           <div class="card-footer">
-            <span class="price-wrapper">
-              <span class="currency-tag">PKR</span>
-              <span class="price-value">1,645</span>
-            </span>
-            <button type="button" class="btn order-btn" data-dish="Flame Grilled Jalapeno Burger">Order Now</button>
+            <div class="card-pricing-row">
+              <span class="price-wrapper">
+                <span class="currency-tag">PKR</span>
+                <span class="price-value">1,645</span>
+              </span>
+              <span class="dish-prep-time">&#9201; 15-20 mins</span>
+            </div>
+            <!-- Dual Interactive Buttons: Add to Cart & Buy Now -->
+            <div class="card-actions">
+              <button type="button" class="btn btn-add-cart" data-id="burger-1" data-name="Flame Grilled Jalapeno Burger" data-price="1645" data-img="images/jalapeno_burger.jpg" aria-label="Add Jalapeno Burger to cart">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn order-btn buy-now-btn" data-id="burger-1" data-name="Flame Grilled Jalapeno Burger" data-price="1645" data-img="images/jalapeno_burger.jpg" aria-label="Buy Jalapeno Burger now">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -180,11 +222,25 @@
             Grilled chicken, mortadella, layered with our special sauce. Sliced into pristine triangles between golden toasted pain de mie, served alongside hand-cut herb-tossed potatoes and house-made seasoned garlic aioli.
           </div>
           <div class="card-footer">
-            <span class="price-wrapper">
-              <span class="currency-tag">PKR</span>
-              <span class="price-value">1,645</span>
-            </span>
-            <button type="button" class="btn order-btn" data-dish="Tuscany Club Sandwich">Order Now</button>
+            <div class="card-pricing-row">
+              <span class="price-wrapper">
+                <span class="currency-tag">PKR</span>
+                <span class="price-value">1,645</span>
+              </span>
+              <span class="dish-prep-time">&#9201; 15 mins</span>
+            </div>
+            <!-- Dual Interactive Buttons: Add to Cart & Buy Now -->
+            <div class="card-actions">
+              <button type="button" class="btn btn-add-cart" data-id="sandwich-1" data-name="Tuscany Club Sandwich" data-price="1645" data-img="images/club_sandwich.jpg" aria-label="Add Tuscany Club Sandwich to cart">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn order-btn buy-now-btn" data-id="sandwich-1" data-name="Tuscany Club Sandwich" data-price="1645" data-img="images/club_sandwich.jpg" aria-label="Buy Tuscany Club Sandwich now">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -202,11 +258,25 @@
             Freshly prepared pasta with grilled chicken tossed in light creamy alfredo sauce. Silky ribbons of egg fettuccine enrobed in aged Parmigiano-Reggiano, sweet European butter, cracked black peppercorns, and pan-seared herb chicken.
           </div>
           <div class="card-footer">
-            <span class="price-wrapper">
-              <span class="currency-tag">PKR</span>
-              <span class="price-value">1,975</span>
-            </span>
-            <button type="button" class="btn order-btn" data-dish="Fettuccine Alfredo Pasta">Order Now</button>
+            <div class="card-pricing-row">
+              <span class="price-wrapper">
+                <span class="currency-tag">PKR</span>
+                <span class="price-value">1,975</span>
+              </span>
+              <span class="dish-prep-time">&#9201; 20 mins</span>
+            </div>
+            <!-- Dual Interactive Buttons: Add to Cart & Buy Now -->
+            <div class="card-actions">
+              <button type="button" class="btn btn-add-cart" data-id="pasta-1" data-name="Fettuccine Alfredo Pasta" data-price="1975" data-img="images/fettuccine_alfredo.jpg" aria-label="Add Fettuccine Alfredo Pasta to cart">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                Add to Cart
+              </button>
+              <button type="button" class="btn order-btn buy-now-btn" data-id="pasta-1" data-name="Fettuccine Alfredo Pasta" data-price="1975" data-img="images/fettuccine_alfredo.jpg" aria-label="Buy Fettuccine Alfredo Pasta now">
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </article>
@@ -338,5 +408,151 @@
     </div>
   </footer>
 
+  <!-- ==========================================================================
+       7. SHOPPING CART SLIDE-OVER DRAWER
+       ========================================================================== -->
+  <div class="cart-drawer-overlay" id="cart-overlay"></div>
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart">
+    <div class="cart-drawer-header">
+      <div class="cart-header-title-wrap">
+        <span class="cart-pretitle">Kohsar Gastronomy</span>
+        <h3 class="cart-title">Your Selection</h3>
+      </div>
+      <button type="button" class="cart-close-btn" id="close-cart-btn" aria-label="Close cart">&times;</button>
+    </div>
+
+    <div class="cart-drawer-body" id="cart-items-container">
+      <!-- Populated dynamically via script.js -->
+      <div class="cart-empty-state" id="cart-empty-state">
+        <div class="empty-icon-wrap">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C0C0C0" stroke-width="1.5">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+        </div>
+        <p class="empty-title">Your cart is currently empty</p>
+        <p class="empty-subtitle">Explore our signature menu to add handcrafted Italian dishes.</p>
+      </div>
+    </div>
+
+    <div class="cart-drawer-footer" id="cart-footer">
+      <div class="cart-summary-line">
+        <span>Subtotal</span>
+        <span class="cart-subtotal-price" id="cart-subtotal">PKR 0</span>
+      </div>
+      <div class="cart-summary-line delivery-notice">
+        <span>Delivery (Islamabad F-Sector)</span>
+        <span class="free-tag">Complimentary</span>
+      </div>
+      <div class="cart-total-line">
+        <span>Total Payable</span>
+        <span class="cart-grand-total" id="cart-grand-total">PKR 0</span>
+      </div>
+      <button type="button" class="btn btn-primary cart-checkout-btn" id="cart-checkout-btn">
+        Proceed to Checkout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ==========================================================================
+       8. CHECKOUT / BUY NOW DIRECT ORDER MODAL
+       ========================================================================== -->
+  <div class="checkout-modal-overlay" id="checkout-modal-overlay"></div>
+  <div class="checkout-modal" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-modal-title">
+    <button type="button" class="modal-close-btn" id="close-checkout-btn" aria-label="Close checkout">&times;</button>
+    
+    <!-- Order Form View -->
+    <div id="checkout-form-view">
+      <div class="checkout-header">
+        <span class="section-eyebrow">Direct Kitchen Order</span>
+        <h3 class="checkout-title" id="checkout-modal-title">Complete Your Order</h3>
+        <p class="checkout-subtitle">Immediate order preparation with direct concierge delivery in Islamabad.</p>
+      </div>
+
+      <!-- Order Summary Banner -->
+      <div class="checkout-order-summary" id="checkout-items-summary"></div>
+
+      <form id="direct-order-form" class="direct-order-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-name">Full Name</label>
+            <input type="text" id="order-name" required placeholder="e.g. Tariq Mansoor">
+          </div>
+          <div class="form-group">
+            <label for="order-phone">Contact Phone</label>
+            <input type="tel" id="order-phone" required placeholder="e.g. 0300 9876543">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="order-address">Delivery Address (Islamabad)</label>
+          <input type="text" id="order-address" required placeholder="e.g. House 14, Street 25, Sector F-6/2">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="order-type">Dining Preference</label>
+            <select id="order-type" class="custom-select">
+              <option value="delivery">Express Home Delivery (F-6 / F-7 / E-7)</option>
+              <option value="pickup">Courtyard Curbside Pickup</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="payment-method">Payment Method</label>
+            <select id="payment-method" class="custom-select">
+              <option value="cod">Cash on Delivery</option>
+              <option value="card">Card on Delivery (POS Machine)</option>
+              <option value="online">Direct Bank Transfer / Raast</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="order-notes">Chef's Preparation Notes (Optional)</label>
+          <textarea id="order-notes" rows="2" placeholder="e.g. Extra parmesan on pasta, dressing on the side..."></textarea>
+        </div>
+
+        <div class="checkout-final-row">
+          <div class="checkout-total-badge">
+            <span>Total Payable:</span>
+            <strong id="modal-total-display">PKR 0</strong>
+          </div>
+          <button type="submit" class="btn btn-primary" id="confirm-order-btn">Place Order Now</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Order Success View -->
+    <div id="checkout-success-view" class="checkout-success-view" style="display: none;">
+      <div class="success-icon-wrap">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#E2725B" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      <span class="section-eyebrow">Order Transmitted Successfully</span>
+      <h3 class="success-title">Grazie Mille!</h3>
+      <p class="success-order-id">Order Reference: <strong id="success-order-number">#TC-84920</strong></p>
+      <p class="success-message">
+        Your selection has been transmitted directly to Tuscany Courtyard's kitchen in Kohsar Market. Our executive chef is preparing your meal à la minute.
+      </p>
+      <div class="success-details-card" id="success-details-card"></div>
+      <button type="button" class="btn btn-primary" id="back-to-menu-btn" style="margin-top: 1.5rem;">Continue Browsing</button>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       9. FLOATING TOAST NOTIFICATION
+       ========================================================================== -->
+  <div class="luxury-toast" id="toast-notification" aria-live="polite">
+    <div class="toast-content">
+      <span class="toast-icon">&check;</span>
+      <span class="toast-text" id="toast-message">Added to your selection</span>
+    </div>
+    <button type="button" class="toast-btn" id="toast-view-cart">View Cart</button>
+  </div>
+
+  <!-- Master JavaScript Application -->
+  <script src="script.js" defer></script>
 </body>
 </html>
