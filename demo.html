@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Tuscany Courtyard - Live Academic Laboratory for CSS Specificity, Display Physics, Margin Collapsing, Lines, and Overflow Mechanics.">
+  <title>CSS Technical Laboratory | Tuscany Courtyard Academic Showcase</title>
+
+  <!-- Google Fonts: Playfair Display, Cinzel, and Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ==========================================================================
+       DEDICATED STYLES FOR ACADEMIC LAB SHOWCASE (demo.html)
+       ========================================================================== */
+    .demo-page {
+      background-color: #FAFAFA;
+      color: #1A1A1A;
+      min-height: 100vh;
+    }
+
+    /* Lab Header */
+    .lab-top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(250, 250, 250, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #E5E5E5;
+      padding: 0.9rem 2rem;
+    }
+
+    .lab-nav-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .lab-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #1A1A1A;
+      color: #FFFFFF;
+      padding: 0.55rem 1.1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .lab-back-btn:hover {
+      background: #E2725B;
+      transform: scale(0.98);
+    }
+
+    .lab-quick-links {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .lab-chip {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      background: #FFFFFF;
+      border: 1px solid #E0E0E0;
+      color: #555555;
+      transition: all 0.25s ease;
+    }
+
+    .lab-chip:hover {
+      border-color: #E2725B;
+      color: #E2725B;
+      background: rgba(226, 114, 91, 0.05);
+    }
+
+    /* Lab Hero */
+    .lab-hero {
+      background: linear-gradient(180deg, #FFFFFF 0%, #F5F3EF 100%);
+      border-bottom: 1px solid #ECE7DE;
+      padding: 4.5rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .lab-hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .lab-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(226, 114, 91, 0.1);
+      border: 1px solid #E2725B;
+      color: #E2725B;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      margin-bottom: 1.25rem;
+    }
+
+    .lab-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .lab-subtitle {
+      font-size: 1.1rem;
+      color: #555555;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .lab-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+      text-align: left;
+    }
+
+    .stat-card {
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 6px;
+      padding: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    }
+
+    .stat-card-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #E2725B;
+    }
+
+    .stat-card-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777777;
+      font-weight: 600;
+      margin-top: 0.2rem;
+    }
+
+    /* Lab Sections */
+    .lab-section {
+      max-width: 1200px;
+      margin: 4.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .lab-card {
+      background: #FFFFFF;
+      border: 1px solid #E2DDD5;
+      border-radius: 8px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      margin-bottom: 3.5rem;
+    }
+
+    .lab-card-header {
+      background: #FAF8F5;
+      border-bottom: 1px solid #ECE7DE;
+      padding: 1.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .lab-card-header-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lab-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #E2725B;
+      font-weight: 700;
+    }
+
+    .lab-card-title {
+      font-size: 1.55rem;
+      margin-top: 0.2rem;
+    }
+
+    .lab-card-body {
+      padding: 2.25rem 2rem;
+    }
+
+    .lab-explain {
+      font-size: 0.98rem;
+      color: #444444;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    /* Code & Live Split Grid */
+    .lab-split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .code-panel {
+      background: #1A1A1A;
+      color: #F0F0F0;
+      border-radius: 6px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      border-left: 3px solid #E2725B;
+    }
+
+    .code-panel pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+
+    .live-panel {
+      background: #FAFAFA;
+      border: 1px solid #E5E5E5;
+      border-radius: 6px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .live-panel-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #777777;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #E5E5E5;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Specificity Visualizer */
+    .specificity-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .specificity-table th,
+    .specificity-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid #E0E0E0;
+      text-align: left;
+    }
+
+    .specificity-table th {
+      background: #F5F3EF;
+      font-weight: 700;
+      color: #1A1A1A;
+    }
+
+    .winner-row {
+      background: rgba(226, 114, 91, 0.08);
+      font-weight: 600;
+    }
+
+    .winner-badge {
+      background: #E2725B;
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-left: 0.5rem;
+    }
+
+    /* Display Boxes Interactive Playground */
+    .display-demo-box {
+      border: 2px dashed #CCCCCC;
+      padding: 1.25rem;
+      background: #FFFFFF;
+      border-radius: 6px;
+      margin-bottom: 1.5rem;
+    }
+
+    .demo-el-block {
+      background: #1A1A1A;
+      color: #FFFFFF;
+      padding: 0.65rem 1rem;
+      margin: 0.4rem 0;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .demo-el-inline {
+      background: #E2725B;
+      color: #FFFFFF;
+      padding: 0.35rem 0.75rem;
+      margin: 0.2rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .demo-el-inline-block {
+      background: #2E7D32;
+      color: #FFFFFF;
+      padding: 0.65rem 1rem;
+      margin: 0.3rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      width: 180px;
+      text-align: center;
+    }
+
+    .demo-el-none {
+      display: none;
+    }
+
+    .interactive-switch-btns {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+
+    .switch-btn {
+      background: #FFFFFF;
+      border: 1px solid #D0D0D0;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .switch-btn.active {
+      background: #E2725B;
+      color: #FFFFFF;
+      border-color: #E2725B;
+    }
+
+    /* Margin Collapsing Visualizer */
+    .margin-collapse-stage {
+      background: #FFF9F5;
+      border: 2px solid #E2DDD5;
+      border-radius: 6px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .margin-box-a {
+      background: #FFFFFF;
+      border: 2px solid #1A1A1A;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-bottom: 32px; /* Margin collapsing participant A */
+      position: relative;
+    }
+
+    .margin-box-b {
+      background: #FFFFFF;
+      border: 2px solid #E2725B;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 24px; /* Margin collapsing participant B */
+      position: relative;
+    }
+
+    .margin-ruler {
+      background: rgba(226, 114, 91, 0.15);
+      border: 1px dashed #E2725B;
+      padding: 0.4rem 1rem;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #E2725B;
+      border-radius: 3px;
+      margin: -24px 0 -8px 0; /* Align directly over the collapsed gap */
+    }
+
+    /* Lines & Pseudo Elements Visualizer */
+    .line-demo-container {
+      padding: 2rem;
+      text-align: center;
+      background: #FFFFFF;
+      border: 1px solid #EAEAEA;
+      border-radius: 6px;
+    }
+
+    .heading-line-preview {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 0.6rem;
+      cursor: pointer;
+    }
+
+    .heading-line-preview::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background-color: #E2725B;
+      transform: translateX(-50%);
+      transition: width 0.4s ease-in-out;
+    }
+
+    .heading-line-preview::after {
+      content: "";
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      background-color: #1A1A1A;
+      border-radius: 50%;
+      transform: translateX(-50%) scale(0);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .heading-line-preview:hover::before {
+      width: 100%;
+    }
+
+    .heading-line-preview:hover::after {
+      transform: translateX(-50%) scale(1);
+    }
+
+    /* Overflow 4-Up Grid */
+    .overflow-comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .overflow-box {
+      border: 1px solid #E0E0E0;
+      border-radius: 6px;
+      background: #FFFFFF;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .overflow-box-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #E2725B;
+      margin-bottom: 0.75rem;
+    }
+
+    .overflow-sample-container {
+      height: 110px;
+      border: 1px solid #D8D8D8;
+      background: #FAFAFA;
+      padding: 0.75rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: #555555;
+    }
+
+    .ov-visible { overflow: visible; }
+    .ov-hidden { overflow: hidden; }
+    .ov-scroll { overflow: scroll; }
+    .ov-auto { overflow: auto; }
+
+    /* Custom WebKit Scrollbar inside ov-auto */
+    .ov-auto::-webkit-scrollbar {
+      width: 5px;
+    }
+    .ov-auto::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+    }
+    .ov-auto::-webkit-scrollbar-thumb {
+      background-color: #E2725B;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 850px) {
+      .lab-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body class="demo-page">
+
+  <!-- ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== -->
+  <header class="lab-top-nav">
+    <div class="lab-nav-inner">
+      <a href="index.html" class="lab-back-btn" title="Return to Main Restaurant Site">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return to Tuscany Courtyard
+      </a>
+
+      <!-- Quick Jump Chips -->
+      <nav class="lab-quick-links" aria-label="Laboratory Anchor Links">
+        <a href="#specificity-demo" class="lab-chip">1. Specificity</a>
+        <a href="#cascade-demo" class="lab-chip">2. Cascade</a>
+        <a href="#display-demo" class="lab-chip">3. Display Types</a>
+        <a href="#margin-demo" class="lab-chip">4. Margin Collapsing</a>
+        <a href="#lines-demo" class="lab-chip">5. Lines &amp; Underlines</a>
+        <a href="#overflow-demo" class="lab-chip">6. Overflow &amp; Scrollbar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       HERO INTRODUCTION
+       ========================================================================== -->
+  <section class="lab-hero">
+    <div class="lab-hero-inner">
+      <div class="lab-badge">&#128300; Academic Technical Showcase &bull; Lab 3.0</div>
+      <h1 class="lab-title">CSS Physics &amp; Architecture Laboratory</h1>
+      <p class="lab-subtitle">
+        A dedicated, live interactive verification suite demonstrating CSS Specificity calculations, Cascade source-order resolutions, Display rendering mechanics, Vertical Margin Collapsing, Pseudo-Element flourishes, and WebKit Overflow handling.
+      </p>
+
+      <div class="lab-stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-num">6</div>
+          <div class="stat-card-label">Core Mechanics Tested</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">(1,1,0)</div>
+          <div class="stat-card-label">Max Specificity Weight</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">32px</div>
+          <div class="stat-card-label">Physical Collapsed Margin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-num">4px</div>
+          <div class="stat-card-label">Sleek WebKit Profile</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       SECTION 1: CSS SPECIFICITY SHOWDOWN
+       ========================================================================== -->
+  <main class="lab-section">
+
+    <article class="lab-card" id="specificity-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 01 &bull; Specificity Hierarchy</span>
+          <h2 class="lab-card-title">CSS Specificity Showdown</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">(Inline &gt; ID &gt; Class &gt; Element)</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          CSS Specificity is the algorithm browsers use to determine which property value applies when multiple conflicting declarations target the exact same element. Specificity values are weighted into four distinct columns: <strong>(Inline, ID, Class, Element)</strong>.
+        </p>
+
+        <table class="specificity-table">
+          <thead>
+            <tr>
+              <th>Rule Selector</th>
+              <th>Target Element</th>
+              <th>Specificity Score</th>
+              <th>Calculated Winner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>.card-title</code></td>
+              <td>Margherita Card Title</td>
+              <td><code>(0, 1, 0)</code> &mdash; 1 Class</td>
+              <td>Lost (Overridden by ID)</td>
+            </tr>
+            <tr class="winner-row">
+              <td><code>#first-dish .card-title</code></td>
+              <td>Margherita Card Title</td>
+              <td><code>(1, 1, 0)</code> &mdash; 1 ID + 1 Class</td>
+              <td>
+                <strong>WINNER</strong>
+                <span class="winner-badge">Applied</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="lab-split-grid">
+          <div class="code-panel">
+            <pre>/* RULE A: General class selector (0, 1, 0) */
+.card-title {
+  color: #1A1A1A;
+  font-size: 1.15rem;
+}
+
+/* RULE B: ID + Descendant Class (1, 1, 0) */
+#first-dish .card-title {
+  color: #111111; /* WINS: ID (1,0,0) outweighs Class (0,1,0) */
+  font-weight: 700;
+}</pre>
+          </div>
+
+          <div class="live-panel">
+            <span class="live-panel-title">Live Element Inspection</span>
+            <div id="first-dish" style="background:#FFF; padding:1.25rem; border:1px solid #E2725B; border-radius:4px;">
+              <span class="exclusive-tag">Target ID: #first-dish</span>
+              <h3 class="card-title" style="color: #111111; font-weight: 700; font-size: 1.3rem;">Margherita Pizza</h3>
+              <p style="font-size: 0.85rem; color: #666; margin-top: 0.5rem;">
+                Computed color: <code>#111111</code> (Deep Onyx) because <code>#first-dish .card-title</code> holds specificity (1,1,0), completely overpowering <code>.card-title</code> (0,1,0).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==========================================================================
+         SECTION 2: CASCADE (SOURCE ORDER) RESOLUTION
+         ========================================================================== -->
+    <article class="lab-card" id="cascade-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 02 &bull; The Cascade Algorithm</span>
+          <h2 class="lab-card-title">Cascade &amp; Source Order Tie-Breaker</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">Equal Specificity Tie-Breaker</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          When two conflicting declarations share the <strong>exact same specificity score</strong>, the CSS Cascade resolves the tie through <strong>Source Order</strong>: the declaration appearing <em>last</em> in the stylesheet wins.
+        </p>
+
+        <div class="lab-split-grid">
+          <div class="code-panel">
+            <pre>/* DECLARATION 1: Specificity (0, 1, 0) */
+.order-btn {
+  background-color: #1A1A1A; /* Charcoal: Declared First */
+}
+
+/* DECLARATION 2: Specificity (0, 1, 0) */
+.order-btn {
+  background-color: #E2725B; /* Terracotta: DECLARED LAST -> WINS! */
+  color: #FFFFFF;
+}</pre>
+          </div>
+
+          <div class="live-panel">
+            <span class="live-panel-title">Live Button Winner Inspection</span>
+            <div style="text-align: center; padding: 1.5rem 0;">
+              <button type="button" class="btn order-btn" style="margin-bottom: 1rem;">
+                Order Now / Buy Now
+              </button>
+              <p style="font-size: 0.85rem; color: #555;">
+                Computed background: <strong style="color: #E2725B;">#E2725B (Terracotta)</strong>. Even though both rules targeted <code>.order-btn</code> with identical weight <code>(0,1,0)</code>, Declaration 2 was read last by the CSS engine.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==========================================================================
+         SECTION 3: DISPLAY PHYSICS (block, inline, inline-block, none)
+         ========================================================================== -->
+    <article class="lab-card" id="display-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 03 &bull; Visual Formatting Model</span>
+          <h2 class="lab-card-title">Display Types Comparative Lab</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">block &bull; inline &bull; inline-block &bull; none</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          Click the interactive buttons below to test how changing <code>display</code> alters layout flow, container boundaries, and margin respect in real-time:
+        </p>
+
+        <!-- Interactive Switcher -->
+        <div class="interactive-switch-btns">
+          <button type="button" class="switch-btn active" onclick="setDisplayType('block', this)">1. display: block</button>
+          <button type="button" class="switch-btn" onclick="setDisplayType('inline', this)">2. display: inline</button>
+          <button type="button" class="switch-btn" onclick="setDisplayType('inline-block', this)">3. display: inline-block</button>
+          <button type="button" class="switch-btn" onclick="setDisplayType('none', this)">4. display: none</button>
+        </div>
+
+        <div class="display-demo-box">
+          <p style="color: #777; font-size: 0.85rem; margin-bottom: 0.75rem;">Surrounding normal document flow text:</p>
+          <span>Antecedent sentence text before the element &mdash; </span>
+          
+          <div id="dynamic-display-target" class="demo-el-block" style="transition: all 0.3s ease;">
+            Target Element: <span id="display-label-text">display: block</span>
+          </div>
+
+          <span> &mdash; Subsequent sentence text continuing smoothly after the element.</span>
+        </div>
+
+        <div id="display-explanation-card" class="code-panel">
+          <pre id="display-explanation-text">display: block
+- Occupies 100% of container width by default.
+- Always starts on a fresh new line.
+- Respects width, height, padding, and all four margins (top, right, bottom, left).</pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==========================================================================
+         SECTION 4: VERTICAL MARGIN COLLAPSING DEMONSTRATION
+         ========================================================================== -->
+    <article class="lab-card" id="margin-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 04 &bull; Box Model Physics</span>
+          <h2 class="lab-card-title">Vertical Margin Collapsing Proof</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">32px + 24px = 32px</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          In CSS, the top and bottom margins of adjoining block-level boxes in normal flow <strong>collapse</strong> into a single margin. The resulting gap is equal to the <strong>maximum</strong> of the margins, not their arithmetic sum!
+        </p>
+
+        <div class="margin-collapse-stage">
+          <!-- Box A -->
+          <div class="margin-box-a">
+            <strong>Paragraph A (Lead Text)</strong> &mdash; <code>margin-bottom: 32px;</code>
+            <p style="font-size:0.85rem; color:#555; margin-top:0.25rem;">
+              "Nestled within the vibrant corridor of Kohsar Market, Tuscany Courtyard remains an uncompromising tribute..."
+            </p>
+          </div>
+
+          <!-- Measurement Ruler showing the collapsed 32px gap -->
+          <div class="margin-ruler">
+            &uarr; Collapsed Margin Gap = Exactly 32px (MAX of 32px &amp; 24px, NOT 56px!) &darr;
+          </div>
+
+          <!-- Box B -->
+          <div class="margin-box-b">
+            <strong>Paragraph B (Sub Text)</strong> &mdash; <code>margin-top: 24px;</code>
+            <p style="font-size:0.85rem; color:#555; margin-top:0.25rem;">
+              "Beyond ingredients, our sunlit outdoor courtyard was designed as a living sanctuary of Mediterranean leisure..."
+            </p>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;" class="code-panel">
+          <pre>/* PHYSICAL COLLAPSE CALCULATION IN NORMAL FLOW */
+.heritage-lead-p {
+  margin-bottom: 32px; /* Margin A */
+}
+
+.heritage-sub-p {
+  margin-top: 24px;    /* Margin B */
+}
+
+/* COMPUTED DISTANCE = MAX(32px, 24px) = 32px */</pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==========================================================================
+         SECTION 5: LINES & PSEUDO-ELEMENTS (::before & ::after)
+         ========================================================================== -->
+    <article class="lab-card" id="lines-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 05 &bull; Pseudo-Elements &amp; Decorative Lines</span>
+          <h2 class="lab-card-title">Animated Heading Lines &amp; Flourishes</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">::before &bull; ::after Transitions</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          Hover over the heading below to observe the center-expanding underline and center pip created purely with CSS pseudo-elements <code>::before</code> and <code>::after</code>:
+        </p>
+
+        <div class="line-demo-container">
+          <h3 class="heading-line-preview">Hover Over This Heading</h3>
+          <p style="font-size: 0.85rem; color: #777; margin-top: 1.5rem;">
+            Notice the smooth 0.3s width expansion from <code>0%</code> to <code>100%</code> and dot scale from <code>0</code> to <code>1</code>.
+          </p>
+        </div>
+
+        <div style="margin-top: 1.5rem;" class="code-panel">
+          <pre>/* Underline Line using ::before */
+.section-title::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0; /* Default collapsed */
+  height: 2px;
+  background-color: #E2725B;
+  transform: translateX(-50%);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Expansion on Hover */
+.section-title:hover::before {
+  width: 100%; /* Smoothly expands outward from center */
+}</pre>
+        </div>
+      </div>
+    </article>
+
+    <!-- ==========================================================================
+         SECTION 6: OVERFLOW HANDLING & CUSTOM WEBKIT SCROLLBAR
+         ========================================================================== -->
+    <article class="lab-card" id="overflow-demo">
+      <div class="lab-card-header">
+        <div class="lab-card-header-left">
+          <span class="lab-tag">Concept 06 &bull; Container Physics</span>
+          <h2 class="lab-card-title">Overflow Mechanics &amp; Custom Scrollbar</h2>
+        </div>
+        <span class="vip-reservation-badge" style="margin: 0;">visible &bull; hidden &bull; scroll &bull; auto</span>
+      </div>
+
+      <div class="lab-card-body">
+        <p class="lab-explain">
+          Comparing how identical content behaves when container height is fixed at <code>110px</code> across all 4 CSS overflow properties:
+        </p>
+
+        <div class="overflow-comparison-grid">
+          <!-- 1. Visible -->
+          <div class="overflow-box">
+            <span class="overflow-box-label">1. overflow: visible</span>
+            <div class="overflow-sample-container ov-visible">
+              Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves. Text overflows container boundary!
+            </div>
+          </div>
+
+          <!-- 2. Hidden -->
+          <div class="overflow-box">
+            <span class="overflow-box-label">2. overflow: hidden</span>
+            <div class="overflow-sample-container ov-hidden">
+              Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves. Extra text is completely clipped.
+            </div>
+          </div>
+
+          <!-- 3. Scroll -->
+          <div class="overflow-box">
+            <span class="overflow-box-label">3. overflow: scroll</span>
+            <div class="overflow-sample-container ov-scroll">
+              Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves. Scrollbars always visible.
+            </div>
+          </div>
+
+          <!-- 4. Auto (Sleek WebKit Profile) -->
+          <div class="overflow-box" style="border-color: #E2725B;">
+            <span class="overflow-box-label">4. overflow: auto (Custom)</span>
+            <div class="overflow-sample-container ov-auto">
+              Hand-stretched 48-hour fermented crust baked at high heat for a blistered cornicione, finished with cold-pressed extra virgin olive oil and fragrant sweet Genovese basil leaves. Sleek 5px terracotta scrollbar appears automatically!
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;" class="code-panel">
+          <pre>/* CUSTOM WEBKIT SCROLLBAR ARCHITECTURE */
+.card-description::-webkit-scrollbar {
+  width: 4px; /* Sleek profile */
+}
+.card-description::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+.card-description::-webkit-scrollbar-thumb {
+  background-color: #D6D6D6;
+  border-radius: 4px;
+}
+.card-description::-webkit-scrollbar-thumb:hover {
+  background-color: #E2725B; /* Terracotta active hover */
+}</pre>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Footer -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand">Tuscany Courtyard &bull; Academic Laboratory</p>
+      <p class="footer-address">Kohsar Market, Sector F-6/3, Islamabad, Pakistan</p>
+      <a href="index.html" class="btn btn-primary" style="margin-top: 1rem; text-decoration: none;">&larr; Return to Main Restaurant Experience</a>
+    </div>
+  </footer>
+
+  <script>
+    // Interactive Display Switcher Logic
+    function setDisplayType(type, btnEl) {
+      document.querySelectorAll('.switch-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const target = document.getElementById('dynamic-display-target');
+      const label = document.getElementById('display-label-text');
+      const explain = document.getElementById('display-explanation-text');
+
+      target.className = '';
+      if (type === 'block') {
+        target.className = 'demo-el-block';
+        target.style.display = 'block';
+        label.textContent = 'display: block';
+        explain.textContent = 'display: block\n- Occupies 100% of container width by default.\n- Always starts on a fresh new line.\n- Respects width, height, padding, and all four margins.';
+      } else if (type === 'inline') {
+        target.className = 'demo-el-inline';
+        target.style.display = 'inline';
+        label.textContent = 'display: inline';
+        explain.textContent = 'display: inline\n- Occupies only the width of its inner text content.\n- Sits directly in-line with surrounding words.\n- Ignores top/bottom margins and fixed width/height declarations!';
+      } else if (type === 'inline-block') {
+        target.className = 'demo-el-inline-block';
+        target.style.display = 'inline-block';
+        label.textContent = 'display: inline-block';
+        explain.textContent = 'display: inline-block (Best for Buttons & Nav)\n- Flows horizontally in-line like text.\n- Retains the superpower of respecting fixed width, height, padding, and margins!';
+      } else if (type === 'none') {
+        target.className = 'demo-el-none';
+        target.style.display = 'none';
+        explain.textContent = 'display: none\n- Completely removes the element from both visual rendering and layout calculation (occupies 0px space).\n- Unlike visibility: hidden which preserves spatial dimensions.';
+      }
+    }
+  </script>
+</body>
+</html>

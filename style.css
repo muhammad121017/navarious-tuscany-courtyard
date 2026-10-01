@@ -381,6 +381,71 @@ article[data-category="pizza"] {
   transform: scale(1.35);
 }
 
+/* ==========================================================================
+   GLOWING ACADEMIC LAB SHOWCASE BUTTON (Beside Home)
+   ========================================================================== */
+.lab-glow-btn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(226, 114, 91, 0.08);
+  border: 1px solid #E2725B;
+  color: #E2725B !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: 50px;
+  font-weight: 700 !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  box-shadow: 0 0 12px rgba(226, 114, 91, 0.35);
+  animation: glowPulseAnimation 2.2s infinite ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.lab-glow-btn:hover {
+  background: #E2725B;
+  color: #FFFFFF !important;
+  box-shadow: 0 0 20px rgba(226, 114, 91, 0.7), 0 0 35px rgba(226, 114, 91, 0.35);
+  transform: scale(1.04);
+}
+
+.pulse-beacon {
+  width: 7px;
+  height: 7px;
+  background-color: #E2725B;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px #E2725B;
+  animation: beaconBlink 1.4s infinite ease-in-out;
+}
+
+.lab-glow-btn:hover .pulse-beacon {
+  background-color: #FFFFFF;
+  box-shadow: 0 0 8px #FFFFFF;
+}
+
+@keyframes glowPulseAnimation {
+  0% {
+    box-shadow: 0 0 6px rgba(226, 114, 91, 0.3), 0 0 12px rgba(226, 114, 91, 0.15);
+    border-color: rgba(226, 114, 91, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(226, 114, 91, 0.7), 0 0 28px rgba(226, 114, 91, 0.35);
+    border-color: #E2725B;
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(226, 114, 91, 0.3), 0 0 12px rgba(226, 114, 91, 0.15);
+    border-color: rgba(226, 114, 91, 0.6);
+  }
+}
+
+@keyframes beaconBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.65); }
+}
+
 
 
 /* ==========================================================================
@@ -458,6 +523,39 @@ article[data-category="pizza"] {
   box-shadow: 0 8px 24px rgba(226, 114, 91, 0.35);
   transition: all 0.3s ease-in-out;
 }
+
+.hero-actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-hero-lab-link {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1rem 1.8rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.btn-hero-lab-link:hover {
+  background: #E2725B;
+  border-color: #E2725B;
+  transform: scale(0.98);
+  box-shadow: 0 6px 20px rgba(226, 114, 91, 0.4);
+}
+
 
 
 /* ==========================================================================

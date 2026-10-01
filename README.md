@@ -46,6 +46,18 @@
 | **Animated Heading Underline** | `::before` and `::after` pseudo-elements that seamlessly expand from center on section heading hover. |
 | **Margin Collapsing** | Physically demonstrated in Heritage section between two consecutive paragraphs (`margin-bottom: 32px` + `margin-top: 24px` = `32px` collapsed). |
 | **Specificity & Cascade** | Commented conflict demonstrations explaining why ID selectors override Class selectors, and how identical-specificity rules resolve via source order. |
+| **🔬 Live CSS Laboratory (`demo.html`)** | Dedicated interactive academic inspection suite linked via the glowing header button next to **Home**. Features live visual proof of Specificity, Display types switcher, Vertical Margin Collapsing measurement ruler, Pseudo-element line animations, and WebKit overflow profiles. |
+
+---
+
+## 🔬 Live Interactive Technical Laboratory (`demo.html`)
+To satisfy comprehensive university examination requirements, a dedicated **Live CSS Laboratory** is included. Access it by clicking the **glowing beacon button** beside the **Home** navigation link in `index.html`, or open `demo.html` directly:
+1. **CSS Specificity Showdown:** Live evaluation table comparing `(0,1,0)` Class vs `(1,1,0)` ID+Class hierarchy.
+2. **Cascade Tie-Breaker:** Live resolution showing how two equal-specificity rules resolve via Source Order.
+3. **Interactive Display Switcher:** Real-time toggles testing `block`, `inline`, `inline-block`, and `none` on live document flow.
+4. **Margin Collapsing Measurement Ruler:** Visual box model proof demonstrating why `32px` and `24px` margins collapse into `32px`.
+5. **Pseudo-Element Flourishes:** Center-expanding lines and flourishes using `::before` & `::after`.
+6. **Overflow Mechanics:** 4-way comparison matrix of `visible`, `hidden`, `scroll`, and `auto` with custom 4px terracotta WebKit scrollbar.
 
 ---
 
