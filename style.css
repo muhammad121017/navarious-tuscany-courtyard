@@ -382,68 +382,111 @@ article[data-category="pizza"] {
 }
 
 /* ==========================================================================
-   GLOWING ACADEMIC LAB SHOWCASE BUTTON (Beside Home)
+   GLOWING & BLINKING ACADEMIC LAB SHOWCASE BUTTON (Beside Home)
+   High-visibility luminous pulse engineered for immediate instructor notice
    ========================================================================== */
 .lab-glow-btn {
   display: inline-flex !important;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(226, 114, 91, 0.08);
-  border: 1px solid #E2725B;
+  gap: 0.55rem;
+  background: rgba(226, 114, 91, 0.12);
+  border: 1.5px solid #E2725B;
   color: #E2725B !important;
-  padding: 0.45rem 1rem !important;
+  padding: 0.5rem 1.15rem !important;
   border-radius: 50px;
-  font-weight: 700 !important;
-  font-size: 0.78rem !important;
+  font-weight: 800 !important;
+  font-size: 0.8rem !important;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-decoration: none;
   position: relative;
-  box-shadow: 0 0 12px rgba(226, 114, 91, 0.35);
-  animation: glowPulseAnimation 2.2s infinite ease-in-out;
-  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 14px rgba(226, 114, 91, 0.5), inset 0 0 8px rgba(226, 114, 91, 0.2);
+  animation: intenseGlowBlink 1.8s infinite ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 .lab-glow-btn:hover {
   background: #E2725B;
   color: #FFFFFF !important;
-  box-shadow: 0 0 20px rgba(226, 114, 91, 0.7), 0 0 35px rgba(226, 114, 91, 0.35);
-  transform: scale(1.04);
+  border-color: #FF7043;
+  box-shadow: 0 0 25px rgba(226, 114, 91, 0.95), 0 0 45px rgba(226, 114, 91, 0.6), inset 0 0 12px rgba(255, 255, 255, 0.5);
+  transform: scale(1.06);
 }
 
 .pulse-beacon {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   background-color: #E2725B;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 6px #E2725B;
-  animation: beaconBlink 1.4s infinite ease-in-out;
+  box-shadow: 0 0 8px #E2725B, 0 0 14px #E2725B;
+  animation: beaconBlinkFast 0.9s infinite alternate ease-in-out;
 }
 
 .lab-glow-btn:hover .pulse-beacon {
   background-color: #FFFFFF;
-  box-shadow: 0 0 8px #FFFFFF;
+  box-shadow: 0 0 10px #FFFFFF, 0 0 18px #FFFFFF;
 }
 
-@keyframes glowPulseAnimation {
-  0% {
-    box-shadow: 0 0 6px rgba(226, 114, 91, 0.3), 0 0 12px rgba(226, 114, 91, 0.15);
-    border-color: rgba(226, 114, 91, 0.6);
+/* Eye-Catching Action Tag beside text */
+.lab-pulse-tag {
+  background: #E2725B;
+  color: #FFFFFF;
+  font-size: 0.6rem;
+  font-weight: 800;
+  padding: 0.15rem 0.5rem;
+  border-radius: 12px;
+  letter-spacing: 0.1em;
+  margin-left: 0.2rem;
+  box-shadow: 0 0 10px rgba(226, 114, 91, 0.85);
+  animation: tagBlink 1.4s infinite alternate ease-in-out;
+}
+
+.lab-glow-btn:hover .lab-pulse-tag {
+  background: #FFFFFF;
+  color: #E2725B;
+  box-shadow: 0 0 12px #FFFFFF;
+}
+
+/* Luminous High-Intensity Glow & Blink Keyframe Animation */
+@keyframes intenseGlowBlink {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(226, 114, 91, 0.45), 0 0 18px rgba(226, 114, 91, 0.25), inset 0 0 6px rgba(226, 114, 91, 0.15);
+    border-color: rgba(226, 114, 91, 0.7);
+    background-color: rgba(226, 114, 91, 0.08);
+    transform: scale(1);
   }
   50% {
-    box-shadow: 0 0 16px rgba(226, 114, 91, 0.7), 0 0 28px rgba(226, 114, 91, 0.35);
-    border-color: #E2725B;
-  }
-  100% {
-    box-shadow: 0 0 6px rgba(226, 114, 91, 0.3), 0 0 12px rgba(226, 114, 91, 0.15);
-    border-color: rgba(226, 114, 91, 0.6);
+    box-shadow: 0 0 22px rgba(226, 114, 91, 0.9), 0 0 38px rgba(226, 114, 91, 0.55), inset 0 0 12px rgba(226, 114, 91, 0.35);
+    border-color: #FF6E40;
+    background-color: rgba(226, 114, 91, 0.2);
+    transform: scale(1.04);
   }
 }
 
-@keyframes beaconBlink {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.65); }
+@keyframes beaconBlinkFast {
+  0% {
+    opacity: 0.35;
+    transform: scale(0.75);
+    box-shadow: 0 0 4px #E2725B;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.35);
+    box-shadow: 0 0 14px #FF5722, 0 0 24px #E2725B;
+  }
+}
+
+@keyframes tagBlink {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.08);
+    opacity: 1;
+    box-shadow: 0 0 14px rgba(226, 114, 91, 1);
+  }
 }
 
 
@@ -533,28 +576,44 @@ article[data-category="pizza"] {
 }
 
 .btn-hero-lab-link {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(226, 114, 91, 0.2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1.5px solid #E2725B;
   padding: 1rem 1.8rem;
   font-size: 0.82rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-weight: 600;
-  border-radius: 3px;
+  font-weight: 700;
+  border-radius: 4px;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 0 16px rgba(226, 114, 91, 0.6);
+  animation: heroLabBtnGlow 2s infinite ease-in-out;
 }
 
 .btn-hero-lab-link:hover {
   background: #E2725B;
-  border-color: #E2725B;
-  transform: scale(0.98);
-  box-shadow: 0 6px 20px rgba(226, 114, 91, 0.4);
+  border-color: #FF7043;
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(226, 114, 91, 0.95), 0 0 50px rgba(226, 114, 91, 0.5);
 }
+
+@keyframes heroLabBtnGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(226, 114, 91, 0.45);
+    border-color: #E2725B;
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(226, 114, 91, 0.9), 0 0 45px rgba(226, 114, 91, 0.5);
+    border-color: #FF8A65;
+  }
+}
+
 
 
 
